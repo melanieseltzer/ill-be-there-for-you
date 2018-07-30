@@ -19,7 +19,7 @@ class App extends Component {
     this.state = {
       data: {},
       isLoading: false,
-      error: false
+      isError: false
     };
   }
 
@@ -30,7 +30,7 @@ class App extends Component {
     fetch(API)
       .then(response => response.json())
       .then(data => this.setState({ data, isLoading: false }))
-      .catch(error => this.setState({ error: true, isLoading: false }));
+      .catch(error => this.setState({ isError: true, isLoading: false }));
   }
 
   componentDidMount() {
@@ -38,15 +38,15 @@ class App extends Component {
   }
 
   render() {
-    const { data, isLoading, error } = this.state;
-
+    const { data, isLoading, isError } = this.state;
+    const loading = isLoading ? '...Loading' : 'Grab Another';
+    const error = isError ? <p>Something went wrong :(</p> : '';
     return (
       <Hero color="primary" size="fullheight">
         <Hero.Body>
           <Container>
             <div className="card">
               <img src={Image} alt="Friends" />
-              {error ? <p>Something went wrong :(</p> : ''}
               {isLoading ? (
                 <Loader
                   type="ThreeDots"
@@ -54,6 +54,8 @@ class App extends Component {
                   height={50}
                   width={50}
                 />
+              ) : isError ? (
+                error
               ) : (
                 <div>
                   <Heading size={4}>"{data.quote}"</Heading>
@@ -64,7 +66,7 @@ class App extends Component {
                 </div>
               )}
               <Button onClick={() => this.fetchQuote()} color="primary">
-                {isLoading ? 'Loading...' : 'Grab Another'}
+                {loading}
               </Button>
             </div>
           </Container>
