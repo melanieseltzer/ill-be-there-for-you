@@ -22,7 +22,7 @@ class App extends Component {
     };
   }
 
-  quote = async () => {
+  loadQuote = async () => {
     // Set loading to true to display loading spinner
     this.setState({ isLoading: true });
 
@@ -43,13 +43,14 @@ class App extends Component {
 
   componentDidMount() {
     // Display a quote on page load by default
-    this.quote();
+    this.loadQuote();
   }
 
   render() {
     const { data, isLoading, isError } = this.state;
     const loading = isLoading ? '...Loading' : 'Grab Another';
     const error = isError ? <p>Something went wrong :(</p> : '';
+
     return (
       <Hero color="primary" size="fullheight">
         <Hero.Body>
@@ -66,7 +67,7 @@ class App extends Component {
               ) : isError ? (
                 error
               ) : (
-                <div>
+                <div className="quoteWrapper">
                   <Heading size={4}>"{data.quote}"</Heading>
                   <Heading subtitle size={4} renderAs="h2">
                     {'- '}
@@ -74,7 +75,7 @@ class App extends Component {
                   </Heading>
                 </div>
               )}
-              <Button onClick={() => this.quote()} color="primary">
+              <Button onClick={() => this.loadQuote()} color="primary">
                 {loading}
               </Button>
             </div>
