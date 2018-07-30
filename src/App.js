@@ -8,8 +8,7 @@ import Loader from 'react-loader-spinner';
 
 import './App.css';
 import Image from './friends.jpg';
-
-const API = 'https://friends-quotes-api.herokuapp.com/quotes/random';
+import getQuote from './services/getQuote';
 
 class App extends Component {
   constructor(props) {
@@ -23,18 +22,28 @@ class App extends Component {
     };
   }
 
-  fetchQuote() {
+  quote = async () => {
     // Set loading to true to display loading spinner
     this.setState({ isLoading: true });
 
-    fetch(API)
-      .then(response => response.json())
-      .then(data => this.setState({ data, isLoading: false }))
-      .catch(error => this.setState({ isError: true, isLoading: false }));
-  }
+    try {
+      // Get resolved promise data
+      const data = await getQuote();
+      this.setState({
+        data,
+        isLoading: false
+      });
+    } catch (error) {
+      this.setState({
+        isError: true,
+        isLoading: false
+      });
+    }
+  };
 
   componentDidMount() {
-    this.fetchQuote();
+    // Display a quote on page load by default
+    this.quote();
   }
 
   render() {
@@ -65,7 +74,7 @@ class App extends Component {
                   </Heading>
                 </div>
               )}
-              <Button onClick={() => this.fetchQuote()} color="primary">
+              <Button onClick={() => this.quote()} color="primary">
                 {loading}
               </Button>
             </div>
