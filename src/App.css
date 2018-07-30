@@ -1,0 +1,39 @@
+.hero.is-primary {
+  background: #F2994A;
+  background: linear-gradient(to right, #F2994A, #F2C94C);
+}
+
+.hero.is-primary .title,
+.hero.is-primary .subtitle {
+  color: inherit;
+}
+
+.hero.is-primary .title {
+  margin-top: 2rem;
+}
+
+.hero.is-primary .subtitle {
+  font-style: italic;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.button.is-primary {
+  background-color: tomato;
+  margin-top: 2rem;
+  transition: .5s ease;
+}
+
+.button.is-primary:hover,
+.button.is-primary:focus {
+  background-color: tomato;
+  transform: scale(1.05);
+}
