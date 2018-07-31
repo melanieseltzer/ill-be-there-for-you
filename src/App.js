@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import Button from 'react-bulma-components/lib/components/button';
 import Container from 'react-bulma-components/lib/components/container';
@@ -10,9 +12,15 @@ import './App.css';
 import Image from './friends.jpg';
 import getQuote from './services/getQuote';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+type State = {
+  data: Object,
+  isLoading: boolean,
+  isError: boolean
+};
+
+class App extends Component<any, State> {
+  constructor() {
+    super();
 
     // Set default state for page load
     this.state = {
