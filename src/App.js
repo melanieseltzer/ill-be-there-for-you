@@ -75,7 +75,7 @@ class App extends Component {
                   </Heading>
                 </div>
               )}
-              <Button onClick={() => this.loadQuote()} color="primary">
+              <Button outlined onClick={() => this.loadQuote()} color="danger">
                 {loading}
               </Button>
             </div>

@@ -1,6 +1,5 @@
 .hero.is-primary {
-  background: #F2994A;
-  background: linear-gradient(to right, #F2994A, #F2C94C);
+  background: #F0F3F7;
 }
 
 .hero.is-primary .title,
@@ -17,23 +16,26 @@
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
   margin: 0 auto;
   max-width: 600px;
   padding: 2rem;
   text-align: center;
 }
 
-.button.is-primary {
-  background-color: tomato;
-  margin-top: 2rem;
-  transition: .5s ease;
+.card img {
+  max-width: 70%;
 }
 
-.button.is-primary:hover,
-.button.is-primary:focus {
-  background-color: tomato;
-  transform: scale(1.05);
+.button.is-danger {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+  transition: .3s ease;
+}
+
+.button.is-danger:hover,
+.button.is-danger:focus {
+  transform: scale(1.03);
 }
