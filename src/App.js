@@ -30,7 +30,7 @@ class App extends Component<any, State> {
     };
   }
 
-  loadQuote = async () => {
+  async loadQuote() {
     // Set loading to true to display loading spinner
     this.setState({ isLoading: true });
 
@@ -47,7 +47,7 @@ class App extends Component<any, State> {
         isLoading: false
       });
     }
-  };
+  }
 
   componentDidMount() {
     // Display a quote on page load by default
@@ -56,7 +56,7 @@ class App extends Component<any, State> {
 
   render() {
     const { data, isLoading, isError } = this.state;
-    const loading = isLoading ? '...Loading' : 'Grab Another';
+    const loading = isLoading ? 'Loading...' : 'Grab Another';
     const error = isError ? <p>Something went wrong :(</p> : '';
 
     return (
